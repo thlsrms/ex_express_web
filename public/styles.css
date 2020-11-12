@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+
+:root {
+    /* --bg-color: #747474; */
+    --bg-color: #f5deb3;
+    --main-color: #747474;
+    --text-color: #313131;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Hind Madurai', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--main-color);
+}
+
+body {
+    max-width: 1200px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin: auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 30px 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav a {
+    display: inline-block;
+}
+
+nav li {
+    list-style-type: none;
+    margin-left: 10px;
+}
+
+footer {
+    text-align: center;
+}
+
+.site-title div h1 {
+    font-size: 3em;
+}
+
+.content {
+    display: flex;
+    background-color: var(--main-color);
+    height: 600px;
+    padding: 5px;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.content div {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content div h3, .content div p {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    margin-left: 10px;
+}
