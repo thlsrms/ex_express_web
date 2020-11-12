@@ -2,7 +2,7 @@
 
 :root {
     /* --bg-color: #747474; */
-    --bg-color: #f5deb3;
+    --bg-color: #fff9ee;
     --main-color: #747474;
     --text-color: #313131;
 }
@@ -54,7 +54,6 @@ footer {
 
 .content {
     display: flex;
-    background-color: var(--main-color);
     height: 600px;
     padding: 5px;
     flex-direction: column;
@@ -62,7 +61,6 @@ footer {
 }
 
 .content div {
-    background-color: var(--main-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,6 +68,5 @@ footer {
 
 .content div h3, .content div p {
     color: var(--text-color);
-    background-color: var(--main-color);
     margin-left: 10px;
 }
