@@ -18,6 +18,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.json()); // Parse JSON bodies
 
+// endpoints
 app.get('/', (req, res) => {
     res.render('index', {title: 'Home'});
 });
@@ -30,6 +31,10 @@ app.get('/add', (req, res) => {
     res.render('add', {title: 'Add new Song'});
 });
 
+app.post('/addsong/', (req, res) => {
+    
+    console.log(req.body.song);
+})
 // 404
 app.use((req, res) => {
     res.status(404).render('404', { title: '404'});

@@ -2,19 +2,19 @@
 <html lang="en">
 <%- include("./partials/head.ejs") %>
 <body>
-    <%- include("./partials/nav.ejs") %>
-        
-          <div class="add-song">
-            <form>
-              <label for="title">Song title:</label>
-              <input type="text" id="title" name="title" required>
-              <label for="artist">Song artist:</label>
-              <input type="text" id="artist" name="artist" required>
-              <label for="year">Song Year:</label>
-              <input type="number" id="year" name="year" required>
-              <button>Submit</button>
-            </form>
-          </div>
-    <%- include("./partials/footer.ejs") %>
+  <%- include("./partials/nav.ejs") %>
+  <div class="add-song">
+    <h3>Add new song</h3>
+    <form action="/addsong/" method="POST">
+      <label for="song[title]">Song Title:</label>
+      <input type="text" id="title" name="song[title]" required>
+      <label for="song[artist]">Song Artist:</label>
+      <input type="text" id="artist" name="song[artist]" required>
+      <label for="song[year]">Song Year:</label>
+      <input type="number" id="year" name="song[year]" required>
+      <button type="submit"> Add </button>
+    </form>
+  </div>
+  <%- include("./partials/footer.ejs") %>
 </body>
 </html>
