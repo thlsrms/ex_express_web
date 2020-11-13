@@ -5,7 +5,7 @@
   <%- include("./partials/nav.ejs") %>
   <div class="add-song">
     <h3>Add new song</h3>
-    <form action="/addsong/" method="POST">
+    <form action="/api/song" method="POST">
       <label for="title">Song Title:</label>
       <input type="text" id="title" name="song[title]" required>
       <label for="artist">Song Artist:</label>

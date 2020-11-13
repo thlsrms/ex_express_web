@@ -1,4 +1,9 @@
+'use strict';
 const express = require('express');
+const { DB } = require('./db/mongoose');
+
+const songRouter = require('./routers/song');
+const playlistRouter = require('./routers/playlist');
 
 const port = process.env.PORT || 3000;
 // express app
@@ -31,10 +36,10 @@ app.get('/add', (req, res) => {
     res.render('add', {title: 'Add new Song'});
 });
 
-app.post('/addsong/', (req, res) => {
-    
-    console.log(req.body.song);
-})
+// routing
+app.use('/api', songRouter);
+app.use('/api', playlistRouter);
+
 // 404
 app.use((req, res) => {
     res.status(404).render('404', { title: '404'});
