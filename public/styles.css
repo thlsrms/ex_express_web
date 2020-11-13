@@ -115,6 +115,11 @@ footer {
     text-align: center;
 }
 
+.add-song > form > select {
+    width: 100px;
+    margin-bottom: 7px;
+}
+
 .add-song > form > button {
     width: 120px;
     margin-top: 7px;

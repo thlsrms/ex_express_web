@@ -11,7 +11,11 @@
       <label for="artist">Song Artist:</label>
       <input type="text" id="artist" name="song[artist]" required>
       <label for="year">Song Year:</label>
-      <input type="number" id="year" name="song[year]" required>
+      <select id="year" name="song[year]" >
+      <% for( let year = 2020; year > 1900; year-- ) { %>
+        <option value="<%= year %>"><%= year %> </option>
+      <% } %>
+      </select>
       <button type="submit"> Add </button>
     </form>
   </div>
