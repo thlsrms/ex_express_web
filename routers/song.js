@@ -15,28 +15,27 @@ router.get('/songs', async (req, res) => {
 router.post('/song', async (req, res) => {
     let newSong = new Song(req.body.song);
 
-    if (!Song.exists(newSong)) {
-        try {
+    await Song.exists(req.body.song, async (err, exists) => {
+        if (err) { return res.status(400).send(err); }
+        if (!exists) {
             await newSong.save();
             res.status(201).send(newSong);
-        } catch (err) {
-            res.status(400).send(err);
+        } else {
+            res.status(400).send('Song already added.');
         }
-    } else {
-        res.status(400).send('Song already added.');
-    }
+    });
 });
 
 router.get('/songs/:id', (req, res) => {
-    
+
 });
 
 router.patch('/songs/:id', (req, res) => {
-    
+
 });
 
 router.delete('/songs/:id', (req, res) => {
-    
+
 });
 
 module.exports = router;
