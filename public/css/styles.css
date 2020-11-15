@@ -39,10 +39,12 @@ nav a {
 
 nav li {
     padding-right: 5px;
+    padding-left: 5px;
     list-style-type: none;
     margin-left: 10px;
-    border-bottom: 2px #242424 groove;
-    border-right: 2px #242424 groove;
+    border-bottom: 2px var(--text-color) groove;
+    border-right: 2px var(--text-color) groove;
+    border-radius: 5px;
 }
 
 footer {
@@ -130,18 +132,15 @@ footer {
     align-items: center;
 }
 
-.search-content, .search-content > div {
+.playlist-content, .no-playlist {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 600px;
 }
 
-/* .search-content > div {
-    flex-direction: row;
-} */
-
-.search-content > div input {
+.no-playlist input {
     margin-left: 20px;
     width: 220px;
     height: 32px;
@@ -151,4 +150,83 @@ footer {
 .search-result {
     margin-top: 8px;
     height: 560px;
+}
+
+.no-playlist button {
+    width: 140px;
+    height: 40px;
+    /* border: 2px #f1e1bf double; */
+    border: none;
+    border-bottom: 2px var(--text-color) groove;
+    border-right: 2px var(--text-color) groove;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.no-playlist > h4 {
+    margin: 50px 0 10px 0;
+}
+
+.no-playlist > #playlistSearchResult {
+    margin-top: 20px;
+    background-color: #fff;
+    width: 400px;
+    height: 80%;
+}
+
+.createPlaylist {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000000;
+    background-color: #00000066;
+}
+
+.create-playlist {
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--text-color);
+    width: 60%;
+    height: 30%;
+    min-height: 300px;
+    border-radius: 10px;
+}
+
+.create-playlist > h3 {
+    text-align: center;
+}
+
+.create-playlist > div, .create-playlist > div > form {
+    height: 90%;
+    width: 100%;
+}
+
+.create-playlist > div > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.create-playlist > div > form input {
+    width: 240px;
+}
+
+#close-modal {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    bottom: 15px;
+}
+
+#close-modal:hover, #close-modal:focus {
+    color: gray;
+    cursor: pointer;
 }

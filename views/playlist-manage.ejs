@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <div class="playlist-content">
+        <% if (playlist === '') { %>
+            <div class="no-playlist">
+                <button id="newPlaylistBtn"><b>Create new Playlist</b></button>
+                <h4>Search Playlists</h4>
+                <form action="searchPlaylistFor">
+                    <input type="text" name="playlistName" id="playlistNameSearch" placeholder="Search Playlist Name" required>
+                </form>
+                <div id="playlistSearchResult">
+                    
+                </div>
+
+                <!-- Create playlist modal -->
+                <div id="createPlaylistModal" class="createPlaylist">
+                    <div class="create-playlist">
+                        <span id="close-modal">&times;</span>
+                        <h3>New Playlist</h3>
+                        <div>
+                            <form action="/api/playlist/add" method="POST">
+                                <div>
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name=playlist[name] placeholder="New Playlist" required>
+                                </div>
+                                <div>
+                                    <label for="author">Author:</label>
+                                    <input type="text" id="author" name=playlist[author] placeholder="Playlist's Author Name" required>
+                                </div>
+                                <button type="submit"><b>Create</b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } else {%>
+            <div>
+                <h4>Youtube search</h4>
+                <form action="/playlist" method="GET">
+                    <input type="text" id="ytsearchform" name="qr" placeholder="Search here" required>
+                    <submit type="submit"></submit>
+                </form>
+            </div>
+        <% }%>
+        <div class="search-result">
+
+        </div>
+
+        <script src="/js/createPlaylistModal.js"></script>
+    </div>
+    <%- include("./partials/footer.ejs") %>
+</body>
+</html>
