@@ -167,6 +167,10 @@ footer {
     margin: 50px 0 10px 0;
 }
 
+#searchPlaylistBtn {
+    width: 60px;
+}
+
 .no-playlist > #playlistSearchResult {
     margin-top: 20px;
     background-color: #fff;

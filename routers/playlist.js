@@ -5,8 +5,10 @@ const { nanoid } = require('nanoid');
 const Playlist = require('../db/models/playlist');
 const router = new express.Router();
 
-router.get('/playlists', (req, res) => {
-    
+router.get('/playlist/search', async (req, res) => {
+    let searchString = new RegExp('\\b' + req.query.playlist.name + '\\b', 'i');
+    console.log(searchString);
+    res.send(await Playlist.find({ name: { $regex: req.query.playlist.name, $options: 'i'}}, 'songs name url author updated'));
 });
 
 router.post('/playlist/add', async (req, res) => {

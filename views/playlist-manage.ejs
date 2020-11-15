@@ -8,8 +8,11 @@
             <div class="no-playlist">
                 <button id="newPlaylistBtn"><b>Create new Playlist</b></button>
                 <h4>Search Playlists</h4>
-                <form action="searchPlaylistFor">
-                    <input type="text" name="playlistName" id="playlistNameSearch" placeholder="Search Playlist Name" required>
+                <form action="/api/playlist/search" method="GET">
+                    <div>
+                        <input type="text" name="playlist[name]" id="playlistNameSearch" placeholder="Search Playlist Name" required>
+                        <button id="searchPlaylistBtn" type="submit">Search</button>
+                    </div>
                 </form>
                 <div id="playlistSearchResult">
                     
