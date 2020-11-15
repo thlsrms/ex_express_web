@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    box-sizing: border-box;
     font-family: 'Hind Madurai', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -127,4 +128,27 @@ footer {
 
 .fourofour {
     align-items: center;
+}
+
+.search-content, .search-content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .search-content > div {
+    flex-direction: row;
+} */
+
+.search-content > div input {
+    margin-left: 20px;
+    width: 220px;
+    height: 32px;
+    text-align: center;
+}
+
+.search-result {
+    margin-top: 8px;
+    height: 560px;
 }
