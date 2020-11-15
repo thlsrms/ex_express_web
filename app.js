@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const path = require('path');
+const ytSearch = require('./lib/ytsearch');
 const { DB } = require('./db/mongoose');
 
 const songRouter = require('./routers/song');
@@ -26,15 +27,18 @@ app.use(express.json()); // Parse JSON bodies
 
 // endpoints
 app.get('/', (req, res) => {
-    res.render('index', {title: 'Home'});
+    res.render('index', { title: 'Home' });
 });
 
-app.get('/search', (req, res) => {
-    res.render('search', {title: 'Search'});
+app.get('/search', async (req, res) => {
+    if (Object.keys(req.query).length > 0) {
+        console.log(await ytSearch(req.query.qr))
+    };
+    res.render('search', { title: 'Search' });
 });
 
 app.get('/add', (req, res) => {
-    res.render('add', {title: 'Add new Song'});
+    res.render('add', { title: 'Add new Song' });
 });
 
 // routing
@@ -43,5 +47,5 @@ app.use('/api', playlistRouter);
 
 // 404
 app.use((req, res) => {
-    res.status(404).render('404', { title: '404'});
+    res.status(404).render('404', { title: '404' });
 });
