@@ -172,10 +172,17 @@ footer {
 }
 
 .no-playlist > #playlistSearchResult {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     background-color: #fff;
     width: 400px;
     height: 80%;
+    align-items: center;
+}
+
+#playlistSearchResult div {
+    background-color: #fff;
 }
 
 .createPlaylist {

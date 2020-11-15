@@ -6,9 +6,10 @@ const Playlist = require('../db/models/playlist');
 const router = new express.Router();
 
 router.get('/playlist/search', async (req, res) => {
-    let searchString = new RegExp('\\b' + req.query.playlist.name + '\\b', 'i');
-    console.log(searchString);
-    res.send(await Playlist.find({ name: { $regex: req.query.playlist.name, $options: 'i'}}, 'songs name url author updated'));
+    await Playlist.find({ name: { $regex: req.query.playlist.name, $options: 'i' } }, 'songs name url author updated')
+    .then( (data) => {
+        res.render('playlist-manage', { title: 'Manage Playlist', playlist: '', playlistSearchResult: data })
+    });
 });
 
 router.post('/playlist/add', async (req, res) => {
@@ -16,16 +17,16 @@ router.post('/playlist/add', async (req, res) => {
     let nanoToken = nanoid(10);
 
     let newPlaylist = new Playlist();
-    newPlaylist.url = nanoIDurl,
-    newPlaylist.name = req.body.playlist.name,
-    newPlaylist.author = req.body.playlist.author,
-    newPlaylist.token = nanoToken,
-    newPlaylist.updated = Date.now()
+        newPlaylist.url = nanoIDurl,
+        newPlaylist.name = req.body.playlist.name,
+        newPlaylist.author = req.body.playlist.author,
+        newPlaylist.token = nanoToken,
+        newPlaylist.updated = Date.now()
 
     const exists = await Playlist.find({ name: newPlaylist.name, author: newPlaylist.author });
-    
+
     if (exists.length > 0) {
-        res.status(304).render('playlist-manage', { title: 'Manage Playlist', playlist: '' });
+        res.status(304).render('playlist-manage', { title: 'Manage Playlist', playlist: '', playlistSearchResult: '' });
         return;
     }
     try {
@@ -43,15 +44,15 @@ router.post('/playlist/add', async (req, res) => {
 });
 
 router.get('/playlists/:url', (req, res) => {
-    
+
 });
 
 router.patch('/playlists/:id', (req, res) => {
-    
+
 });
 
 router.delete('/playlists/:id', (req, res) => {
-    
+
 });
 
 module.exports = router;

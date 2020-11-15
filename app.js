@@ -39,7 +39,7 @@ app.get('/playlist', async (req, res) => {
 
         if ('url' in req.query) {
             app.locals.playlist = req.query.url;
-            res.render('playlist-manage', { title: 'Manage Playlist', playlist: `${req.query.url}` });
+            res.render('playlist-manage', { title: 'Manage Playlist', playlist: `${req.query.url}`, playlistSearchResult: '' });
             return;
         }
     }
@@ -52,7 +52,7 @@ app.get('/playlist', async (req, res) => {
         }));
         return;
     }
-    res.render('playlist-manage', { title: 'Manage Playlist', playlist: '' });
+    res.render('playlist-manage', { title: 'Manage Playlist', playlist: '', playlistSearchResult: '' });
 });
 
 app.get('/add', (req, res) => {

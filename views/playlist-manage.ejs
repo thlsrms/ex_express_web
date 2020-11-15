@@ -15,8 +15,13 @@
                     </div>
                 </form>
                 <div id="playlistSearchResult">
-                    
+                    <% if (playlistSearchResult) { %>
+                        <% playlistSearchResult.forEach(result => { %>
+                            <div><%= result.name %> </div>
+                        <% }) %>
+                    <% } %>
                 </div>
+
 
                 <!-- Create playlist modal -->
                 <div id="createPlaylistModal" class="createPlaylist">
