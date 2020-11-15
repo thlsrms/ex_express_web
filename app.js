@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const url = require('url');
 const path = require('path');
 const ytSearch = require('./lib/ytsearch');
 const { DB } = require('./db/mongoose');
@@ -30,11 +31,28 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
 
-app.get('/search', async (req, res) => {
+app.get('/playlist', async (req, res) => {
     if (Object.keys(req.query).length > 0) {
-        console.log(await ytSearch(req.query.qr))
-    };
-    res.render('search', { title: 'Search' });
+        if ('qr' in Object.keys(req.query)) {
+            console.log(await ytSearch(req.query.qr))
+        }
+
+        if ('url' in req.query) {
+            app.locals.playlist = req.query.url;
+            res.render('playlist-manage', { title: 'Manage Playlist', playlist: `${req.query.url}` });
+            return;
+        }
+    }
+    if (app.locals.playlist) {
+        res.redirect(url.format({
+            pathname: '/playlist',
+            query: {
+                'url': app.locals.playlist
+            }
+        }));
+        return;
+    }
+    res.render('playlist-manage', { title: 'Manage Playlist', playlist: '' });
 });
 
 app.get('/add', (req, res) => {
