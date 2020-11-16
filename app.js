@@ -4,6 +4,7 @@ const url = require('url');
 const path = require('path');
 const ytSearch = require('./lib/ytsearch');
 const { DB } = require('./db/mongoose');
+const Playlist = require('./db/models/playlist');
 
 const songRouter = require('./routers/song');
 const playlistRouter = require('./routers/playlist');
@@ -27,8 +28,14 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.json()); // Parse JSON bodies
 
 // endpoints
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
+app.get('/', async (req, res) => {
+     await Playlist.find( { }, 'songs name url author updated')
+    .then((data) => {
+        data.sort((elemA, elemB) => elemA.updated < elemB.updated ? 1 : -1);
+        data = data.slice(0, 4); // only the last 4 updated
+        res.render('index', { title: 'Manage Playlist', playlist: ``, playlistSearchResult: data });
+        console.log(data);
+    });
 });
 
 app.get('/playlist', async (req, res) => {

@@ -68,6 +68,10 @@ footer {
     overflow-x: auto;
 }
 
+#last-updated {
+    width: 80%;
+}
+
 ::-webkit-scrollbar {
     height: 7px;
     border: 1px solid var(--text-color);
@@ -77,7 +81,7 @@ footer {
 }
 
 .multi-col {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .content div {

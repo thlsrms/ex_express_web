@@ -3,8 +3,17 @@
 <%- include("./partials/head.ejs") %>
 <body>
     <%- include("./partials/nav.ejs") %>
-    <div class="content multi-col">
-        
+    <div class="content" id="last-updated">
+        <h2>Last updated: </h2>
+        <!-- Last updated -->
+        <% if (playlistSearchResult) { %>
+            <% playlistSearchResult.forEach(result => { %>
+                <div><p><%= result.name %></p>
+                    <p><%= result.author %></p>
+                    <p><%= result.url %></p>
+                    <p><%= result.updated %></p></div>
+            <% }) %>
+        <% } %>
     </div>
     <%- include("./partials/footer.ejs") %>
 </body>
