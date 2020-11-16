@@ -8,13 +8,20 @@ const Song = mongoose.model('Song', new mongoose.Schema({
     },
     artist: {
         type: String,
-        required: true,
     },
-    year: {
-        type: Number,
-        required: false,
+    yturl: {
+        type: String,
+    },
+    ytimage: {
+        type: String,
     }
 }));
+
+/* 
+title: string
+artist: string
+ytlink: string
+image: string */
 
 module.exports = Song;
 
