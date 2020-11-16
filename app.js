@@ -33,8 +33,7 @@ app.get('/', async (req, res) => {
     .then((data) => {
         data.sort((elemA, elemB) => elemA.updated < elemB.updated ? 1 : -1);
         data = data.slice(0, 4); // only the last 4 updated
-        res.render('index', { title: 'Manage Playlist', playlist: ``, playlistSearchResult: data });
-        console.log(data);
+        res.render('index', { title: 'Home', playlist: ``, playlistSearchResult: data });
     });
 });
 

@@ -56,20 +56,42 @@ footer {
     font-size: 3em;
 }
 
-.content {
+.content, #last-updated, #most-accessed {
     display: flex;
     flex-direction: column;
-    height: 600px;
-    max-width: 100%;
-    padding: 3px;
-    margin: 0 5% 0 2.5%;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    margin: auto;
     overflow-x: auto;
 }
 
-#last-updated {
+.content {
+    height: 600px;
+}
+
+#last-updated, #most-accessed {
     width: 80%;
+    justify-content: start;
+}
+
+#last-updated {
+    height: 300px;
+}
+
+#most-accessed {
+    height: 100%;
+}
+
+#last-updated > div {
+    border: solid rgb(212, 190, 187);
+    margin: 5px 0 5px 0;
+    width: 80%;
+    justify-content: space-between;
+}
+
+#last-updated > div:hover {
+    border: groove black;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
