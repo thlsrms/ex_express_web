@@ -43,8 +43,11 @@ router.post('/playlist/add', async (req, res) => {
     }
 });
 
-router.get('/playlists/:url', (req, res) => {
-
+router.get('/playlists/', (req, res) => {
+    await Playlist.find( { }, 'songs name url author updated')
+    .then((data) => {
+        res.status(201).send(data);
+    });
 });
 
 router.patch('/playlists/:id', (req, res) => {
