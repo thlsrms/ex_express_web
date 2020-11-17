@@ -43,7 +43,7 @@ router.post('/playlist/add', async (req, res) => {
     }
 });
 
-router.get('/playlists/', (req, res) => {
+router.get('/playlists/', async (req, res) => {
     await Playlist.find( { }, 'songs name url author updated')
     .then((data) => {
         res.status(201).send(data);
